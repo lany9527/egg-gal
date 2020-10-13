@@ -11,7 +11,8 @@ module.exports = appInfo => {
    * @type {Egg.EggAppConfig}
    **/
   const config = exports = {};
-
+  // 在 docker 里 初始化一个 mysql 容器
+  // docker run -p 3306:3306 --name lymysql -e MYSQL_ROOT_PASSWORD=123456 -d mysql:latest
   config.sequelize = {
     dialect: 'mysql',
     database: 'graphql',

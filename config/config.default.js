@@ -11,7 +11,7 @@ module.exports = appInfo => {
    * @type {Egg.EggAppConfig}
    **/
   const config = exports = {};
-  // 在 docker 里 初始化一个 mysql 容器
+  // 在 docker 里 初始化一个 mysql 容器, 然后连接
   // docker run -p 3306:3306 --name lymysql -e MYSQL_ROOT_PASSWORD=123456 -d mysql:latest
   config.sequelize = {
     dialect: 'mysql',
@@ -20,6 +20,8 @@ module.exports = appInfo => {
     port: '3306',
     username: 'root',
     password: '123456',
+    // 时区，sequelize有很多自动时间的方法，都是和时区相关的，记得设置成东8区（+08:00）
+    timezone: '+08:00',
   };
 
   config.graphql = {
